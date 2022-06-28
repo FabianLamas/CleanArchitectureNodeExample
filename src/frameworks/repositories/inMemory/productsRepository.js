@@ -28,4 +28,4 @@ module.exports = {
     getById: async (id) => {
         return inMemoryDb.products.find(p => p.id === id);
     }
-}
+};
