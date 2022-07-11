@@ -1,4 +1,4 @@
-const { Product } = require('../../entities');
+const { Order } = require('../../entities');
 
 module.exports = dependencies => {
     const { ordersRepository } = dependencies;
@@ -8,19 +8,17 @@ module.exports = dependencies => {
     }
 
     const execute = ({ 
-        name,
-        description,
-        images,
-        price,
-        color,
-        meta 
+        userId,
+        productsIds,
+        date,
+        isPayed,
+        meta
     }) => {
-        const order = new Product({
-            name,
-            description,
-            images,
-            price,
-            color,
+        const order = new Order({
+            userId,
+            productsIds,
+            date,
+            isPayed,
             meta
         });
         

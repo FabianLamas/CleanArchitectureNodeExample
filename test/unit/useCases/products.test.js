@@ -95,11 +95,8 @@ describe('Product Use Cases', () => {
                 id: uuidv4()
             };
             const updatedProduct = await updateProductUseCase(dependencies).execute({ product: cloneDeep(mockProduct) });
-
-            console.log(updatedProduct);
             expect(updatedProduct).toEqual(mockProduct);
-
-
+            
             const call = mockProductRepo.update.mock.calls[0][0];
             expect(call).toEqual(mockProduct);
         });
