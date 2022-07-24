@@ -6,9 +6,9 @@ const deleteUserController = require('./deleteUser.controller');
 
 module.exports = dependencies => {
     return {
-        addUser: addUserController(dependencies),
-        getUserById: getUserByIdController(dependencies),
-        updateUser: updateUserController(dependencies),
-        deleteUser: deleteUserController(dependencies)
+        addUserController: addUserController(dependencies),
+        getUserByIdController: getUserByIdController(dependencies),
+        updateUserController: updateUserController(dependencies),
+        deleteUserController: deleteUserController(dependencies)
     };
 };

@@ -1,6 +1,8 @@
+const { Response } = require('../../frameworks/common');
+
 module.exports = dependencies => {
     
-    const { useCases: { updateUserUseCase } } = dependencies;
+    const { useCases: { user: { updateUserUseCase } } }= dependencies;
 
     return async (req, res, next) => {
         try{

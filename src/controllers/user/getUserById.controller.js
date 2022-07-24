@@ -1,11 +1,13 @@
+const { Response } = require('../../frameworks/common');
+
 module.exports = dependencies => {
 
-    const { useCases: { getUserByIdUseCase } } = dependencies;
+    const { useCases: { user: { getUserByIdUseCase } } } = dependencies;
 
     return async (req, res, next) => {
         try{
-            const { body = {} } = req;
-            const { id } = body;
+            const { params = {} } = req;
+            const { id } = params;
 
             const getUserById = getUserByIdUseCase(dependencies);
             const response = await getUserById.execute({ id });

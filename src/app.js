@@ -8,6 +8,8 @@ const routes = require('./frameworks/expressSpecific/routes');
 
 const API_PREFIX = process.env.API_PREFIX || '/api/v1';
 
+const dependencies = require('./config/dependencies');
+
 module.exports = {
     start:() => {
 
