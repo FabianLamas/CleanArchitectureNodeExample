@@ -1,4 +1,7 @@
+const { isEmpty } = require('lodash');
 const { Order } = require('../../entities');
+const { ResponseError } = require('../../frameworks/common');
+const validator = require('./validator');
 
 module.exports = dependencies => {
     const { ordersRepository } = dependencies;
@@ -7,7 +10,9 @@ module.exports = dependencies => {
         throw new Error('The orders repository should be exist in dependencies');
     }
 
-    const execute = ({ 
+    const getValidationErrors = validator(dependencies);
+
+    const execute = async ({ 
         userId,
         productsIds,
         date,
@@ -21,7 +26,18 @@ module.exports = dependencies => {
             isPayed,
             meta
         });
-        
+
+        const validationErrors = await getValidationErrors({ order });
+     
+        if (!isEmpty(validationErrors)) {
+            return Promise.reject(new ResponseError({
+                status: 403,
+                msg: 'Validation Errors',
+                reason: 'Somebody sent bad data',
+                validationErrors
+            }))
+        }
+
         return ordersRepository.add(order);
     }
 
