@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 
 const app = express();
@@ -11,6 +13,8 @@ const API_PREFIX = process.env.API_PREFIX || '/api/v1';
 const dependencies = require('./config/dependencies');
 
 const ErrorHandler = require('./frameworks/expressSpecific/ErrorHandler');
+
+const { connect: connectToMongo } = require('./frameworks/database/mongo');
 
 module.exports = {
     start:() => {
@@ -27,6 +31,7 @@ module.exports = {
 
         app.listen(port, () => {
             console.log(`Server is running on port ${port}`);
+            connectToMongo();
         });
     }
 };

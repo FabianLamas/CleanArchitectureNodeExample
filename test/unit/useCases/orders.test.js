@@ -114,7 +114,7 @@ describe('Order Use Case', () => {
         //         expect(err.status).toBe(403);
         //         expect(err.validationErrors).toEqual([new ValidationError({field: 'productsIds', msg: `No products with ids ${fakeId}`})])
         //     }
-        // })
+        // });
 
         // test('should return validation error when user id unknown', async () => {
         //     const fakeId = uuidv4();
